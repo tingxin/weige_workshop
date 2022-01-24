@@ -7,14 +7,14 @@ from pyspark.context import SparkContext
 from awsglue.context import GlueContext
 from awsglue.job import Job
 from pyspark.sql import functions as fn
-from pyspark.sql.functions import udf
-from pyspark.sql.types import StringType, TimestampType, DoubleType, LongType, DataType
+from secret import get_redshift_secret
 
+redshift_info = get_redshift_secret()
 
 
 redshift_jdbc = "jdbc:redshift://redshift-cluster-weige.cmnyuhfynqj7.cn-northwest-1.redshift.amazonaws.com.cn:5439/dev"
-redshift_user = "admin"
-redshift_pass = "Demo1234"
+redshift_user = redshift_info['username']
+redshift_pass = redshift_info['password']
 
 args = getResolvedOptions(sys.argv, ["JOB_NAME"])
 sc = SparkContext()

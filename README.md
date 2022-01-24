@@ -35,6 +35,10 @@ CREATE TABLE IF NOT EXISTS `order` (
 );
 ```
 5. 插入假数据
+```
+python3 mock.py
+```
+
 
 ## 创建 mysql 链接
 1. 使用mysql 从库创建 glue 的数据链接
@@ -53,11 +57,14 @@ cd mysql-connector-java-8.0.26/
 
 aws s3 cp mysql-connector-java-8.0.26.jar s3://nwcd-camp-bucket/jdbc/
 ```
+## 配置 secretsmanager
 
 ## 构建 dwd job
 1. glue studio 创建 dwd作业，选择空白python script
-2. 复制dwd.py脚本，修改redshift修改参数
+2. 修改作业配置，将依赖库secret.py通过aws cli上传到s3,并配置在作业的依赖库选项中
 3. 在作业高级属性中添加mysql 相关参数 
+4. 注意配置mysql 链接信息
+
 ```
 'dbuser', 'dbpassword', 'dburl', 'mysqlJdbcS3path'
  
