@@ -74,7 +74,8 @@ aws s3 cp mysql-connector-java-8.0.26.jar s3://nwcd-camp-bucket/jdbc/
 
 ## 构建workflow
 
-## 跟多详细
+## 更多资源
 ```
 https://github.com/toreydai/serverless-analytics-workshop
+https://github.com/aws-samples/amazon-redshift-commands-using-aws-glue
 ```
